@@ -1272,7 +1272,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [133] = {.entry = {.count = 1, .reusable = true}}, SHIFT(17),
   [135] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
   [137] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_directive, 2, 0, 3),
-  [139] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_label_definition, 2, 0, 1),
+  [139] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_label_definition, 2, 0, 4),
 };
 
 #ifdef __cplusplus

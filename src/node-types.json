@@ -90,17 +90,16 @@
   {
     "type": "label_definition",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "label",
+          "named": true
+        }
+      ]
     }
   },
   {

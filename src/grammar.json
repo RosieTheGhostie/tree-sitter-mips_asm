@@ -100,12 +100,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "name",
+          "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
             "name": "identifier"
-          }
+          },
+          "named": true,
+          "value": "label"
         },
         {
           "type": "IMMEDIATE_TOKEN",
