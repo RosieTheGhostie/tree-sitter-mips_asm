@@ -23,7 +23,7 @@ export default grammar({
     instruction: ($) =>
       seq(field("operator", $.identifier), repeat(choice($.operand, ","))),
     label_definition: ($) =>
-      seq(field("name", $.identifier), token.immediate(":")),
+      seq(alias($.identifier, $.label), token.immediate(":")),
 
     directive_value: ($) =>
       repeat1(
