@@ -191,18 +191,38 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "0[Oo][0-7]+"
+          "type": "SYMBOL",
+          "name": "_bin_integer"
         },
         {
-          "type": "PATTERN",
-          "value": "[+-]?\\d+"
+          "type": "SYMBOL",
+          "name": "_oct_integer"
         },
         {
-          "type": "PATTERN",
-          "value": "0[Xx][\\dA-Fa-f]+"
+          "type": "SYMBOL",
+          "name": "_dec_integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hex_integer"
         }
       ]
+    },
+    "_bin_integer": {
+      "type": "PATTERN",
+      "value": "0[Bb][01]+"
+    },
+    "_oct_integer": {
+      "type": "PATTERN",
+      "value": "0[Oo][0-7]+"
+    },
+    "_dec_integer": {
+      "type": "PATTERN",
+      "value": "[+-]?\\d+"
+    },
+    "_hex_integer": {
+      "type": "PATTERN",
+      "value": "0[Xx][\\dA-Fa-f]+"
     },
     "float": {
       "type": "PATTERN",
