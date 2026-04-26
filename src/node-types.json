@@ -31,12 +31,8 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "comma",
-          "named": true
-        },
         {
           "type": "float",
           "named": true
@@ -50,15 +46,7 @@
           "named": true
         },
         {
-          "type": "left_parenthesis",
-          "named": true
-        },
-        {
           "type": "register",
-          "named": true
-        },
-        {
-          "type": "right_parenthesis",
           "named": true
         },
         {
@@ -87,10 +75,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "comma",
-          "named": true
-        },
         {
           "type": "operand",
           "named": true
@@ -171,12 +155,43 @@
     }
   },
   {
-    "type": ":",
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "unescaped_characters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
     "named": false
   },
   {
-    "type": "comma",
-    "named": true
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
   },
   {
     "type": "comment",
@@ -185,6 +200,10 @@
   },
   {
     "type": "directive_token",
+    "named": true
+  },
+  {
+    "type": "escape_sequence",
     "named": true
   },
   {
@@ -200,10 +219,6 @@
     "named": true
   },
   {
-    "type": "left_parenthesis",
-    "named": true
-  },
-  {
     "type": "line_break",
     "named": true
   },
@@ -212,11 +227,7 @@
     "named": true
   },
   {
-    "type": "right_parenthesis",
-    "named": true
-  },
-  {
-    "type": "string",
+    "type": "unescaped_characters",
     "named": true
   }
 ]

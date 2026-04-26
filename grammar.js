@@ -21,16 +21,16 @@ export default grammar({
         optional(field("value", $.directive_value)),
       ),
     instruction: ($) =>
-      seq(field("operator", $.identifier), repeat(choice($.operand, $.comma))),
+      seq(field("operator", $.identifier), repeat(choice($.operand, ","))),
     label_definition: ($) =>
       seq(field("name", $.identifier), token.immediate(":")),
 
     directive_value: ($) =>
       repeat1(
         choice(
-          $.comma,
-          $.left_parenthesis,
-          $.right_parenthesis,
+          ",",
+          "(",
+          ")",
           $.integer,
           $.float,
           $.string,
@@ -41,20 +41,18 @@ export default grammar({
     operand: ($) => choice($.integer, alias($.identifier, $.label), $.register),
 
     line_break: (_$) => /\r?\n/,
-    comma: (_$) => ",",
-    left_parenthesis: (_$) => "(",
-    right_parenthesis: (_$) => ")",
     directive_token: (_$) => /\.[a-z]+/,
     integer: (_$) => choice(/0[Oo][0-7]+/, /[+-]?\d+/, /0[Xx][\dA-Fa-f]+/),
     float: (_$) => /[+-]?(\d+([.]\d*)?([eE][+-]?\d+)?|[.]\d+([eE][+-]?\d+)?)/,
-    string: (_$) => /"([^"\\\x00-\x1f]|\\[^\x00-\x1f])*"/,
+    string: ($) =>
+      seq('"', repeat(choice($.unescaped_characters, $.escape_sequence)), '"'),
+    unescaped_characters: (_$) => token.immediate(/[^"\\\n\r]+/),
+    escape_sequence: (_$) =>
+      /\\(?:[^ux0-7]|[0-7]{1,3}|x[\dA-Fa-f]{2}|u[\dA-Fa-f]{4})/,
     identifier: (_$) => /[\p{L}_](?:\.?[\p{N}\p{L}_])*/u,
     register: (_$) => /\$[\dA-Za-z]+/,
 
     comment: (_$) => /#.*/,
   },
-  extras: ($) => [
-    /[\f\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]+/,
-    $.comment,
-  ],
+  extras: ($) => [/[ \t]+/, $.comment],
 });
