@@ -11,9 +11,11 @@ export default grammar({
   name: "mips_asm",
   rules: {
     // TODO: add the actual grammar rules
-    source_file: ($) => repeat(seq($._item, repeat1($.line_break))),
+    source_file: ($) => repeat($._item),
 
-    _item: ($) => choice($.directive, $.instruction, $.label_definition),
+    _item: ($) => choice($._line_item, $.label_definition),
+    _line_item: ($) =>
+      seq(choice($.directive, $.instruction), repeat1($.line_break)),
 
     directive: ($) =>
       seq(

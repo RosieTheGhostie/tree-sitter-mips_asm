@@ -5,20 +5,8 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_item"
-          },
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "line_break"
-            }
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "_item"
       }
     },
     "_item": {
@@ -26,15 +14,36 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "directive"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "instruction"
+          "name": "_line_item"
         },
         {
           "type": "SYMBOL",
           "name": "label_definition"
+        }
+      ]
+    },
+    "_line_item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "directive"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "instruction"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "line_break"
+          }
         }
       ]
     },
