@@ -42,12 +42,7 @@ export default grammar({
 
     line_break: (_$) => /\r?\n/,
     directive_token: (_$) => /\.[a-z]+/,
-    integer: ($) =>
-      choice($._bin_integer, $._oct_integer, $._dec_integer, $._hex_integer),
-    _bin_integer: (_$) => /0[Bb][01]+/,
-    _oct_integer: (_$) => /0[Oo][0-7]+/,
-    _dec_integer: (_$) => /[+-]?\d+/,
-    _hex_integer: (_$) => /0[Xx][\dA-Fa-f]+/,
+    integer: (_$) => /0(?:[Bb][01]+|[Oo][0-7]+|[Xx][\dA-Fa-f]+)|(?:[+-]?\d+)/,
     float: (_$) => /[+-]?(\d+([.]\d*)?([eE][+-]?\d+)?|[.]\d+([eE][+-]?\d+)?)/,
     string: ($) =>
       seq('"', repeat(choice($.unescaped_characters, $.escape_sequence)), '"'),

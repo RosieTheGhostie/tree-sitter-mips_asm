@@ -188,41 +188,8 @@
       "value": "\\.[a-z]+"
     },
     "integer": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_bin_integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_oct_integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_dec_integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_hex_integer"
-        }
-      ]
-    },
-    "_bin_integer": {
       "type": "PATTERN",
-      "value": "0[Bb][01]+"
-    },
-    "_oct_integer": {
-      "type": "PATTERN",
-      "value": "0[Oo][0-7]+"
-    },
-    "_dec_integer": {
-      "type": "PATTERN",
-      "value": "[+-]?\\d+"
-    },
-    "_hex_integer": {
-      "type": "PATTERN",
-      "value": "0[Xx][\\dA-Fa-f]+"
+      "value": "0(?:[Bb][01]+|[Oo][0-7]+|[Xx][\\dA-Fa-f]+)|(?:[+-]?\\d+)"
     },
     "float": {
       "type": "PATTERN",

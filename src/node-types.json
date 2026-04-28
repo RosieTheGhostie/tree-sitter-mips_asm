@@ -83,11 +83,6 @@
     }
   },
   {
-    "type": "integer",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "label_definition",
     "named": true,
     "fields": {},
@@ -211,6 +206,10 @@
   },
   {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "integer",
     "named": true
   },
   {
